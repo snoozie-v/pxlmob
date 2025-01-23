@@ -15,7 +15,7 @@ const NFTLookupTwo = () => {
     setError(null);
 
     try {
-      const response = await fetch(`https://arc72-voi-mainnet.nftnavigator.xyz/nft-indexer/v1/tokens?owner=${address}`);
+      const response = await fetch(`https://arc72-voi-mainnet.nftnavigator.xyz/nft-indexer/v1/tokens?contractId=447482&owner=${address}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
