@@ -1,29 +1,33 @@
-import { useState } from 'react'
 import './App.css'
-
-import { useEffect } from 'react';
-
-// import Transaction from './components/Transaction';
+import Pxlmob from './components/Pxlmob';
 import NFTDashboard from './components/NFTDashboard';
-import RandomNFTDisplay from './components/RandomNFTDisplay';
+import {useWallet, WalletId, WalletManager, WalletProvider } from '@txnlab/use-wallet-react'
+import WalletContext from './components/WalletContext';
 
-
+console.log(WalletContext)
+const walletManager = new WalletManager({
+  wallets: [
+    WalletId.KIBISIS,
+  ],
+})
 
 function App() {
-
-  
   return (
-    <>
-      <h1>PXLMOB</h1>
-      <p>Make NFTs Great Again.</p>
-      <RandomNFTDisplay />
-      <h2>PXLMOB have landed.</h2>
-      <p>999 PXL Minotaurs forged on the VOI Network.
-      </p>
-      <p>They may be cute but these little Minos pack a punch!!</p>
-      <NFTDashboard />
-    </>
-  )
+    <WalletProvider manager={walletManager}>
+      <WalletProviderComponent />
+    </WalletProvider>
+  );
 }
 
-export default App
+function WalletProviderComponent() {
+  const { activeAddress } = useWallet();
+
+  return (
+    <WalletContext.Provider value={{ activeAddress }}>
+      <Pxlmob />
+      {/* <NFTDashboard /> */}
+    </WalletContext.Provider>
+  );
+}
+
+export default App;

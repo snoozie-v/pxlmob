@@ -11,12 +11,19 @@ const NFTHolderStats = ({ setSelectedAddress }) => {
     const fetchData = async () => {
       try {
         // contract ID for PXLMOB
-        const response = await fetch('https://arc72-voi-mainnet.nftnavigator.xyz/nft-indexer/v1/tokens?contractId=447482');
-        const data = await response.json();
+        const [response1, response2] = await Promise.all([
+          fetch('https://arc72-voi-mainnet.nftnavigator.xyz/nft-indexer/v1/tokens?contractId=447482'),
+          fetch('https://arc72-voi-mainnet.nftnavigator.xyz/nft-indexer/v1/tokens?contractId=400099')
+        ]);
+
+        const [data1, data2] = await Promise.all([response1.json(), response2.json()]);
+
+        // Combine tokens from both responses
+        const allTokens = [...data1.tokens, ...data2.tokens];
 
         const countHolders = {};
         let pieceCount = 0;
-        data.tokens.forEach(token => {
+        allTokens.forEach(token => {
           countHolders[token.owner] = (countHolders[token.owner] || 0) + 1;
           pieceCount++;
         });

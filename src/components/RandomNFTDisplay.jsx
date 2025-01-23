@@ -6,7 +6,7 @@ const RandomNFTDisplay = () => {
   const [error, setError] = useState(null);
   
   // Assuming there are 735 NFTs to choose from
-  const totalNFTs = 735;
+  const totalNFTs = 746;
 
   const fetchRandomNFT = async () => {
     setIsLoading(true);
@@ -62,13 +62,13 @@ const RandomNFTDisplay = () => {
   return (
     <div>
       {randomNFT ? (
-        <>
-          <p>Token ID: {randomNFT.tokenId}</p>
+        <> 
           <img 
             src={randomNFT.image} 
             alt={`NFT ${randomNFT.tokenId}`} 
             style={{ width: '300px', height: '300px' }}
           />
+          <p>Token ID: {randomNFT.tokenId}</p>
         </>
       ) : (
         <p>No NFT image to display.</p>

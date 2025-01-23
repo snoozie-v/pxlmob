@@ -1,42 +1,50 @@
 #root {
-  max-width: 1280px;
+  max-width: 1180px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #f78378
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Space between logo and icons on larger screens */
+  align-items: center;
+  padding: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+#logo {
+  height: 100px;
+}
+
+#walletImage, #navMenu {
+  height: 90px;
+}
+
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between walletImage and navMenu */
+}
+
+.icon {
+  width: 30px; /* or whatever size you want */
+  height: 30px; /* make sure your images fit these dimensions by adjusting */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .header-container {
+      flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+      justify-content: flex-start; /* Aligns items to the left */
   }
-  to {
-    transform: rotate(360deg);
+  
+  .logo {
+      margin-bottom: 10px; /* Adds some space below logo when it wraps */
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .right-icons {
+      width: 100%; /* Ensures that the icons take full width when wrapped */
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
