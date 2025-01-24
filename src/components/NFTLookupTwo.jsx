@@ -45,7 +45,7 @@ const NFTLookupTwo = () => {
           {error && <p>{error}</p>}
           
           {nfts.length > 0 && (
-             <ul style={{  display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', listStyle: 'none', padding: 0 }}>
+             <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', listStyle: 'none', padding: 0 }}>
               {nfts.map((nft, index) => {
                 let metadata = {};
                 try {
@@ -54,12 +54,23 @@ const NFTLookupTwo = () => {
                 } catch (error) {
                   console.error('Failed to parse metadata for NFT at index', index, error);
                 }
-
+  
                 return (
-                  <li key={index}>
-                    Token ID: {nft.tokenId || 'Unknown'},
+                  <li key={index} style={{
+                    display: 'flex',
+                    flexDirection: 'column', // Stack items vertically
+                    alignItems: 'center', // Center items horizontally
+                    textAlign: 'center', // Center text
+                    margin: '10px',
+                  }}>
+                    <p style={{ margin: 0 }}>Token ID: {nft.tokenId || 'Unknown'}</p>
                     {metadata.image ? (
-                      <img src={metadata.image} alt={`NFT ${nft.tokenId}`} style={{ width: '100px', height: '100px', }} />
+                      <img src={metadata.image} alt={`NFT ${nft.tokenId}`} style={{ 
+                        width: '100px', 
+                        height: '100px', 
+                        border: '5px solid',
+                        marginTop: '5px' // Add some space between text and image
+                      }} />
                     ) : (
                       <span>Image: Unknown</span>
                     )}
@@ -71,7 +82,7 @@ const NFTLookupTwo = () => {
           {nfts.length === 0 && !isLoading && !error && <p>No NFTs found for this address.</p>}
         </>
       ) : (
-        <p>Please connect your wallet to lookup NFTs.</p>
+        <p>Please connect your wallet to view your PXLMOB NFTs.</p>
       )}
       <hr />
     </div>

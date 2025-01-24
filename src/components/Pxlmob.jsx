@@ -6,8 +6,10 @@ const Pxlmob = () => {
     return (
         <div>
             <Header />
-            <h2>Make Pixels Great Again.</h2>
+            <h1>Make Pixels Great Again.</h1>
             <RandomNFTDisplay />
+            <p>999 PXL Minotaurs forged on the VOi Network.</p> 
+            <h3>They may be cute but these little Minos pack a punch!!</h3>
             <NFTLookupTwo />
             {/* <h4>999 PXL Minotaurs forged on the VOI Network.</h4> */}
         </div>

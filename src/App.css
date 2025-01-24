@@ -8,6 +8,7 @@
 }
 
 .header-container {
+  height: 100px;
   display: flex;
   justify-content: space-between; /* Space between logo and icons on larger screens */
   align-items: center;
@@ -15,7 +16,7 @@
 }
 
 #logo {
-  height: 100px;
+  height: 80px;
 }
 
 #walletImage, #navMenu {

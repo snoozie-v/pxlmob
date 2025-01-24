@@ -1,7 +1,7 @@
 import React from 'react';
 import { NetworkId, WalletId, useWallet, type Wallet } from '@txnlab/use-wallet-react';
 import algosdk from 'algosdk';
-import logo from '../assets/pxlmoblogo.jpg';
+// import logo from '../assets/pxlmoblogo2.jpg';
 import walletImage from '../assets/walletconnect.png';
 import navMenu from '../assets/navmenu.png';
 import logo2 from '../assets/logo2.png';
