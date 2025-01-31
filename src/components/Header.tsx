@@ -53,7 +53,7 @@ const Header: React.FC = () => {
 
   return (
     <div className='header-container'>
-      <img id="logo" src={logo2} alt="Pxlmob Logo" />
+      <img id="logo" src={logo2} alt="Pxlmob Logo" style={{border: '10px solid #333'}} />
       <div className='right-cons'>
         <img 
           id="walletImage" 
