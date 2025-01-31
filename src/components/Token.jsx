@@ -4,12 +4,13 @@ import Footer from './Footer';
 const Token = () => {
   return (
     <>
+    <Header />
     <div style={{ 
       maxWidth: "700px", 
       margin: "0 auto", // Center the container
       padding: "0 20px" // Optional: Add some padding if needed
     }}>
-      <Header />
+      
       <h1 style={{ textAlign: "center" }}>Token Information</h1>
 
       <section className="dates">

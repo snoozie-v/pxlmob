@@ -5,14 +5,13 @@ import Footer from "./Footer";
 const RoadMap = () => {
   return (
     <>
+    <Header />
     <div className="roadmap"
     style={{ 
       maxWidth: "700px", 
       margin: "0 auto", // Center the container
       padding: "0 20px" // Optional: Add some padding if needed
     }}>
-    
-    <Header />
       <h1>Roadmap</h1>
 
       <section className="phase-one">
