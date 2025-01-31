@@ -36,7 +36,11 @@ const NFTLookupTwo = () => {
   }, [activeAddress]);
 
   return (
-    <div>
+    <div style={{
+      maxWidth: "700px",
+      margin: "0 auto", // Center the div on the screen
+      textAlign: "center" // Center text within the div
+    }}>
       <hr />
       {activeAddress ? (
         <>
@@ -45,7 +49,13 @@ const NFTLookupTwo = () => {
           {error && <p>{error}</p>}
           
           {nfts.length > 0 && (
-             <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', listStyle: 'none', padding: 0 }}>
+            <ul style={{
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              justifyContent: 'center', // Center the items in the list
+              listStyle: 'none', 
+              padding: 0
+            }}>
               {nfts.map((nft, index) => {
                 let metadata = {};
                 try {
@@ -58,9 +68,9 @@ const NFTLookupTwo = () => {
                 return (
                   <li key={index} style={{
                     display: 'flex',
-                    flexDirection: 'column', // Stack items vertically
-                    alignItems: 'center', // Center items horizontally
-                    textAlign: 'center', // Center text
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    textAlign: 'center',
                     margin: '10px',
                   }}>
                     <p style={{ margin: 0 }}>Token ID: {nft.tokenId || 'Unknown'}</p>
@@ -69,7 +79,7 @@ const NFTLookupTwo = () => {
                         width: '100px', 
                         height: '100px', 
                         border: '5px solid',
-                        marginTop: '5px' // Add some space between text and image
+                        marginTop: '5px' 
                       }} />
                     ) : (
                       <span>Image: Unknown</span>

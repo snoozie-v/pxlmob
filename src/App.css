@@ -49,3 +49,42 @@
       width: 100%; /* Ensures that the icons take full width when wrapped */
   }
 }
+
+.navigation-menu {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navigation-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navigation-menu li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.navigation-menu li:hover {
+  background-color: #e0e0e0;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  margin: 0 auto;
+}

@@ -1,6 +1,7 @@
 import RandomNFTDisplay from './RandomNFTDisplay';
 import Header from './Header';
 import NFTLookupTwo from './NFTLookupTwo';
+import Footer from './Footer';
 
 const Pxlmob = () => {
     return (
@@ -12,6 +13,7 @@ const Pxlmob = () => {
             <h3>They may be cute but these little Minos pack a punch!!</h3>
             <NFTLookupTwo />
             {/* <h4>999 PXL Minotaurs forged on the VOI Network.</h4> */}
+            <Footer />
         </div>
     )
 }
