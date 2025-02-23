@@ -4,7 +4,7 @@ import algosdk from 'algosdk';
 import { useNavigate } from 'react-router-dom'; // Changed from useHistory to useNavigate
 import walletImage from '../assets/walletconnect.png';
 import navMenu from '../assets/navmenu.png';
-import logo2 from '../assets/logo2.png';
+import logo2 from '../assets/pxlmob.png';
 
 const Header: React.FC = () => {
   const {
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
           </div>
         )}
       </div>
-      <img id="logo" src={logo2} alt="Pxlmob Logo" style={{border: '6px solid #333'}} />
+      <img id="logo" src={logo2} alt="Pxlmob Logo"  />
       
       <div className='right'>
         

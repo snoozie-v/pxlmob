@@ -89,7 +89,10 @@ const NFTLookupTwo = () => {
           {nfts.length === 0 && !isLoading && !error && <p>No NFTs found for this address.</p>}
         </>
       ) : (
+        <div className='no-wallet'>
         <p>Please connect your wallet to view your PXLMOB NFTs.</p>
+        {/* <button>Connect Wallet</button> */}
+        </div>
       )}
     </div>
   );
