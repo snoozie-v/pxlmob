@@ -53,15 +53,24 @@ const Header: React.FC = () => {
 
   return (
     <div className='header-container'>
-      <img id="logo" src={logo2} alt="Pxlmob Logo" style={{border: '10px solid #333'}} />
-      <div className='right-cons'>
+      <div className='left'>
         <img 
-          id="walletImage" 
-          src={walletImage} 
-          alt="Wallet image" 
-          onClick={handleWalletConnect}
-          style={{ cursor: 'pointer' }}
-        />
+            id="walletImage" 
+            src={walletImage} 
+            alt="Wallet image" 
+            onClick={handleWalletConnect}
+            style={{ cursor: 'pointer' }}
+          />
+        {activeAddress && (
+          <div style={{ color: 'white',  fontSize: '12px' }}>
+            {activeAddress.slice(0, 6)}...{activeAddress.slice(-4)} 
+          </div>
+        )}
+      </div>
+      <img id="logo" src={logo2} alt="Pxlmob Logo" style={{border: '6px solid #333'}} />
+      
+      <div className='right'>
+        
         <img 
           id="navMenu" 
           src={navMenu} 
@@ -70,12 +79,8 @@ const Header: React.FC = () => {
           style={{ cursor: 'pointer' }} // Change cursor to indicate it's clickable
         />
       </div>
-      {/* Optional: Display network status or connected wallet address */}
-      {activeAddress && (
-        <div style={{ color: 'white', position: 'absolute', right: '10px', top: '25px', fontSize: '12px' }}>
-          Address: {activeAddress.slice(0, 6)}...{activeAddress.slice(-4)} | Network: {activeNetwork}
-        </div>
-      )}
+
+
     </div>
   );
 };

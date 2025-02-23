@@ -36,11 +36,7 @@ const NFTLookupTwo = () => {
   }, [activeAddress]);
 
   return (
-    <div style={{
-      maxWidth: "700px",
-      margin: "0 auto", // Center the div on the screen
-      textAlign: "center" // Center text within the div
-    }}>
+    <div >
       <hr />
       {activeAddress ? (
         <>
@@ -71,15 +67,16 @@ const NFTLookupTwo = () => {
                     flexDirection: 'column', 
                     alignItems: 'center', 
                     textAlign: 'center',
-                    margin: '10px',
+                    margin: '7px',
                   }}>
                     <p style={{ margin: 0 }}>Token ID: {nft.tokenId || 'Unknown'}</p>
                     {metadata.image ? (
                       <img src={metadata.image} alt={`NFT ${nft.tokenId}`} style={{ 
                         width: '100px', 
                         height: '100px', 
-                        border: '5px solid',
-                        marginTop: '5px' 
+                        border: '3px solid #333',
+                        marginTop: '5px',
+                        borderRadius: '8px',
                       }} />
                     ) : (
                       <span>Image: Unknown</span>
@@ -94,7 +91,6 @@ const NFTLookupTwo = () => {
       ) : (
         <p>Please connect your wallet to view your PXLMOB NFTs.</p>
       )}
-      <hr />
     </div>
   );
 };

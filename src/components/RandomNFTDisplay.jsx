@@ -79,14 +79,15 @@ const RandomNFTDisplay = () => {
   return (
     <div>
       {randomNFT ? (
-        <> 
+        <div > 
           <img 
+            className='random-image'
             src={randomNFT.image} 
             alt={`NFT ${randomNFT.tokenId}`} 
-            style={{ width: '400px', height: '400px', border: '10px solid #333', padding: '0px' }}
+
           />
           <p>Token ID: {randomNFT.tokenId}</p>
-        </>
+        </div>
       ) : (
         <p>No NFT image to display.</p>
       )}

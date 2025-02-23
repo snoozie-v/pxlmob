@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Luckiest Guy', cursive;
+  font-family: PT Sans Regular;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, .navigation-menu {
+  font-family: 'Luckiest Guy', cursive;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -26,13 +29,17 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  /* min-width: 320px; */
   min-height: 100vh;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+p {
+  font-weight: bold
 }
 
 button {

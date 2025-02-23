@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import tokenImg from '../assets/pixToken.jpg'
 
 const Token = () => {
   return (
@@ -11,7 +12,8 @@ const Token = () => {
       padding: "0 20px" // Optional: Add some padding if needed
     }}>
       
-      <h1 style={{ textAlign: "center" }}>Token Information</h1>
+      <h1 style={{ textAlign: "center" }}>$PIX Token Information</h1>
+      <img className="pix-image" src={tokenImg} />
 
       <section className="dates">
         <h2 style={{ textAlign: "center" }}>Important Dates</h2>

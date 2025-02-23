@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import RandomNFTDisplay from "./RandomNFTDisplay";
 
 
 const RoadMap = () => {
@@ -13,7 +14,7 @@ const RoadMap = () => {
       padding: "0 20px" // Optional: Add some padding if needed
     }}>
       <h1>Roadmap</h1>
-
+    <RandomNFTDisplay />
       <section className="phase-one">
         <h2>Phase 1: Inception</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

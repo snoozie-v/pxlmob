@@ -5,14 +5,13 @@ import Footer from './Footer';
 
 const Pxlmob = () => {
     return (
-        <div>
+        <div className='app'>
             <Header />
-            <h1>Make Pixels Great Again.</h1>
+            <h1>Make Pixels Great Again</h1>
             <RandomNFTDisplay />
-            <p>999 PXL Minotaurs forged on the VOi Network.</p> 
+            <p>999 PXL Minotaurs forged on the VOI Network</p> 
             <h3>They may be cute but these little Minos pack a punch!!</h3>
             <NFTLookupTwo />
-            {/* <h4>999 PXL Minotaurs forged on the VOI Network.</h4> */}
             <Footer />
         </div>
     )
