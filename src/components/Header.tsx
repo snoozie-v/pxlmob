@@ -1,20 +1,13 @@
 import React from 'react';
 import { NetworkId, WalletId, useWallet, type Wallet } from '@txnlab/use-wallet-react';
-import algosdk from 'algosdk';
 import { useNavigate } from 'react-router-dom'; // Changed from useHistory to useNavigate
+import { handleWalletConnect} from './WalletConnect.js'
 import walletImage from '../assets/walletconnect.png';
 import navMenu from '../assets/navmenu.png';
 import logo2 from '../assets/pxlmob.png';
 
 const Header: React.FC = () => {
-  const {
-    algodClient,
-    activeAddress,
-    activeNetwork,
-    setActiveNetwork,
-    transactionSigner,
-    wallets
-  } = useWallet();
+  const { activeAddress, setActiveNetwork, wallets } = useWallet();
 
   const navigate = useNavigate(); // Changed from useHistory to useNavigate
 
@@ -23,31 +16,7 @@ const Header: React.FC = () => {
     setActiveNetwork(NetworkId.VOIMAIN);
   }, [setActiveNetwork]);
 
-  const setActiveAccount = (event: React.ChangeEvent<HTMLSelectElement>, wallet: Wallet) => {
-    const target = event.target;
-    wallet.setActiveAccount(target.value);
-  }
-
-  const handleWalletConnect = () => {
-    console.log(algodClient);
-    // Assuming the first wallet in the list is the one to interact with for simplicity
-    if (wallets.length > 0) {
-      const wallet = wallets[0];
-      if (!wallet.isConnected) {
-        wallet.connect().then(() => {
-          console.log('Successfully connected');
-        }).catch((error) => {
-          console.error('Failed to connect:', error);
-        });
-      } else {
-        wallet.disconnect();
-      }
-    }
-  };
-
-  // Function to handle navigation when navMenu is clicked
   const handleNavMenuClick = () => {
-    // Navigate to a new route where your menu or modal can be shown
     navigate('/navigation-menu');
   };
 
@@ -58,7 +27,7 @@ const Header: React.FC = () => {
             id="walletImage" 
             src={walletImage} 
             alt="Wallet image" 
-            onClick={handleWalletConnect}
+            onClick={() => handleWalletConnect(wallets)}
             style={{ cursor: 'pointer' }}
           />
         {activeAddress && (

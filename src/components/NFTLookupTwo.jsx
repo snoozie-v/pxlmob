@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useWallet } from '@txnlab/use-wallet-react'; // Import useWallet
+import { handleWalletConnect } from './WalletConnect'; // Import the utility function
 import WalletContext from './WalletContext'; // Adjust path as necessary
 
 const NFTLookupTwo = () => {
   const { activeAddress } = useContext(WalletContext);
+  const { wallets } = useWallet();
   const [nfts, setNFTs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,6 +27,7 @@ const NFTLookupTwo = () => {
       setNFTs(data.tokens);
     } catch (err) {
       setError('Failed to fetch NFTs. Please check the wallet address.');
+      console.log(err)
     }
     setIsLoading(false);
   };
@@ -62,26 +66,40 @@ const NFTLookupTwo = () => {
                 }
   
                 return (
-                  <li key={index} style={{
-                    display: 'flex',
-                    flexDirection: 'column', 
-                    alignItems: 'center', 
-                    textAlign: 'center',
-                    margin: '7px',
-                  }}>
-                    <p style={{ margin: 0 }}>Token ID: {nft.tokenId || 'Unknown'}</p>
-                    {metadata.image ? (
-                      <img src={metadata.image} alt={`NFT ${nft.tokenId}`} style={{ 
-                        width: '100px', 
-                        height: '100px', 
-                        border: '3px solid #333',
-                        marginTop: '5px',
-                        borderRadius: '8px',
-                      }} />
-                    ) : (
-                      <span>Image: Unknown</span>
-                    )}
-                  </li>
+<li
+  key={index}
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    margin: '7px',
+  }}
+>
+  <a
+    href={`https://nautilus.sh/#/collection/447482/token/${nft.tokenId}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ textDecoration: 'none', color: 'inherit' }} // Optional: keeps styling consistent
+  >
+    <p style={{ margin: 0 }}>Token ID: {nft.tokenId || 'Unknown'}</p>
+    {metadata.image ? (
+      <img
+        src={metadata.image}
+        alt={`NFT ${nft.tokenId}`}
+        style={{
+          width: '100px',
+          height: '100px',
+          border: '3px solid #333',
+          marginTop: '5px',
+          borderRadius: '8px',
+        }}
+      />
+    ) : (
+      <span>Image: Unknown</span>
+    )}
+  </a>
+</li>
                 );
               })}
             </ul>
@@ -91,7 +109,8 @@ const NFTLookupTwo = () => {
       ) : (
         <div className='no-wallet'>
         <p>Please connect your wallet to view your PXLMOB NFTs.</p>
-        {/* <button>Connect Wallet</button> */}
+        <button onClick={() => handleWalletConnect(wallets)}>
+          Connect Wallet</button>
         </div>
       )}
     </div>
