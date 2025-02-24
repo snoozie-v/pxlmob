@@ -1,6 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 import tokenImg from '../assets/pixToken.jpg'
+import TokenBalance from './TokenBalance';
 
 const Token = () => {
   return (
@@ -13,7 +14,10 @@ const Token = () => {
     }}>
       
       <h1 style={{ textAlign: "center" }}>$PIX Token Information</h1>
-      <img className="pix-image" src={tokenImg} />
+      
+      <a href="https://voi.nomadex.app/0/0/2/410419">
+      <h2>Buy $PIX here</h2><img className="pix-image" src={tokenImg} /></a>
+      <TokenBalance />
 
       <section className="dates">
         <h2 style={{ textAlign: "center" }}>Important Dates</h2>
@@ -33,15 +37,6 @@ const Token = () => {
         </ul>
       </section>
 
-      <section className="distribution">
-        <h2>Token Distribution</h2>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-      </section>
-
-      <section className="utility">
-        <h2>Token Utility</h2>
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
-      </section>
       
     </div>
     <Footer />

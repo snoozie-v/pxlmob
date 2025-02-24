@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useWallet } from '@txnlab/use-wallet-react';
 import { handleWalletConnect } from './WalletConnect';
 
@@ -22,6 +22,7 @@ const NFTLookupTwo = () => {
       setNFTs(data.tokens || []);
     } catch (err) {
       setError('Failed to fetch NFTs. Please check the wallet address.');
+      console.log(err)
     }
     setIsLoading(false);
   };
