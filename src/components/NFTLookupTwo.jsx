@@ -77,7 +77,7 @@ const NFTLookupTwo = () => {
   }}
 >
   <a
-    href={`https://nautilus.sh/#/collection/447482/token/${nft.tokenId}`}
+    href={`https://nftnavigator.xyz/collection/447482/token/${nft.tokenId}`}
     target="_blank"
     rel="noopener noreferrer"
     style={{ textDecoration: 'none', color: 'inherit' }} // Optional: keeps styling consistent
