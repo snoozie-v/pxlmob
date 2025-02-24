@@ -33,6 +33,14 @@
   height: 69px; 
 }
 
+.clickable {
+  cursor: pointer;
+}
+
+.wallet-address-display {
+  color: white;
+  font-size: 12px;
+}
 .random-image, .pix-image {
   width: 400px;
   height: 400px;
@@ -88,30 +96,114 @@
   font-size: 14px;
   color: #666;
 }
-/* Media query for responsiveness */
-@media (max-width: 780px) {
-  #logo {
-    width: 175px;
-    height: 50px;
-  }
-  #walletImage, #navMenu {
-    height: 42px; 
-  }
-  .random-image, .pix-image {
-    width: 200px;
-    height: 200px;
-    border: 6px solid #333;
-    border-radius: 8px;
-  }
 
-  /* NFT image */
-.nft-image {
-  width: 100px;
-  height: 100px;
-  border: 3px solid #333;
-  margin-top: 5px;
-  border-radius: 8px;
+/* Token.jsx styles */
+.token-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
+
+.token-title {
+  text-align: center;
+}
+
+.buy-link {
+  text-decoration: none; /* Default, can be customized */
+  color: inherit; /* Keeps link color consistent, adjust as needed */
+}
+
+.buy-link h2 {
+  /* Add specific styles if needed, e.g.: */
+  /* margin: 10px 0; */
+  /* font-size: 20px; */
+}
+
+/* Assuming .pix-image might already exist, but if not: */
+.pix-image {
+  /* Add styles as needed, e.g.: */
+  /* display: block; */
+  /* margin: 20px auto; */
+  /* width: 100%; */
+  /* max-width: 300px; */
+}
+
+/* Section styles */
+.section-title {
+  text-align: center;
+}
+
+.dates-list {
+  text-align: left;
+  list-style-position: inside;
+}
+
+.supply-list {
+  text-align: left;
+  list-style-position: inside;
+}
+
+/* Optional: Style the spans inside lists for consistency */
+.dates-list span,
+.supply-list span {
+  /* e.g., font-style: italic; */
+  /* color: #666; */
+}
+
+/* TokenBalance.jsx styles */
+.token-balance-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.token-balance-container h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.wallet-address {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.loading {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 0;
+}
+
+.error {
+  font-size: 14px;
+  color: #d00;
+  margin: 10px 0;
+}
+
+.balance {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+
+
+/* Reused from NFTLookupTwo */
+.no-wallet {
+  text-align: center;
+  padding: 20px;
+}
+
+.no-wallet p {
+  margin: 0 0 10px 0;
+}
+
+.no-wallet button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 .navigation-menu {
@@ -157,3 +249,31 @@
 .footer-content {
   margin: 0 auto;
 }
+
+
+/* Media query for responsiveness */
+@media (max-width: 780px) {
+  #logo {
+    width: 175px;
+    height: 50px;
+  }
+  #walletImage, #navMenu {
+    height: 42px; 
+  }
+  .random-image, .pix-image {
+    width: 200px;
+    height: 200px;
+    border: 6px solid #333;
+    border-radius: 8px;
+  }
+
+  /* NFT image */
+.nft-image {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #333;
+  margin-top: 5px;
+  border-radius: 8px;
+}
+}
+
