@@ -19,6 +19,10 @@ const Header: React.FC = () => {
     navigate('/navigation-menu');
   };
 
+  const handleLogoClick = () => {
+    navigate('/'); 
+  };
+
   return (
     <div className="header-container">
       <div className="left">
@@ -34,8 +38,14 @@ const Header: React.FC = () => {
             {activeAddress.slice(0, 6)}...{activeAddress.slice(-4)}
           </div>
         )}
-      </div>
-      <img id="logo" src={logo2} alt="Pxlmob Logo" />
+      </div>     
+      <img 
+        id="logo" 
+        src={logo2} 
+        alt="Pxlmob Logo"
+        onClick={handleLogoClick} 
+        className="clickable"   
+      />
       <div className="right">
         <img
           id="navMenu"
