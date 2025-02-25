@@ -62,8 +62,8 @@ const TokenBalance = () => {
         </>
       ) : (
         <div className="no-wallet">
-          <p>Please connect your wallet to view your token balance.</p>
-          <button onClick={() => handleWalletConnect(wallets)}>
+          <h3>Please connect your wallet to view your token balance.</h3>
+          <button id="connect"onClick={() => handleWalletConnect(wallets)}>
             Connect Wallet
           </button>
         </div>

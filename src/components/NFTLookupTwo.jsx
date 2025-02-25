@@ -82,7 +82,7 @@ const NFTLookupTwo = () => {
       ) : (
         <div className="no-wallet">
           <h3>Please connect your wallet to view your PXLMOB NFTs.</h3>
-          <button onClick={() => handleWalletConnect(wallets)}>Connect Wallet</button>
+          <button id="connect" onClick={() => handleWalletConnect(wallets)}>Connect Wallet</button>
         </div>
       )}
     </div>

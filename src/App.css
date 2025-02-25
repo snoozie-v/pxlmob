@@ -60,6 +60,9 @@
   list-style: none;
   padding: 0;
 }
+#connect {
+  font-size: 20px;
+}
 
 /* Individual NFT item */
 .nft-item {
@@ -184,12 +187,11 @@
   margin: 10px 0;
 }
 
-
-
 /* Reused from NFTLookupTwo */
 .no-wallet {
   text-align: center;
   padding: 20px;
+  padding-bottom: 40px;
 }
 
 .no-wallet p {
