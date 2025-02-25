@@ -86,7 +86,7 @@ const RandomNFTDisplay = () => {
             alt={`NFT ${randomNFT.tokenId}`} 
 
           />
-          <p>Token ID: {randomNFT.tokenId}</p>
+          <h3>Token ID: {randomNFT.tokenId}</h3>
         </div>
       ) : (
         <p>No NFT image to display.</p>

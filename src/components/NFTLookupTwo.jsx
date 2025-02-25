@@ -36,10 +36,10 @@ const NFTLookupTwo = () => {
       <hr />
       {activeAddress ? (
         <>
-          <p>
+          <h3>
             Looking up NFTs for address: {activeAddress.slice(0, 6)}...
             {activeAddress.slice(-4)}
-          </p>
+          </h3>
           {isLoading && <p>Loading...</p>}
           {error && <p>{error}</p>}
           {nfts.length > 0 && (
@@ -81,7 +81,7 @@ const NFTLookupTwo = () => {
         </>
       ) : (
         <div className="no-wallet">
-          <p>Please connect your wallet to view your PXLMOB NFTs.</p>
+          <h3>Please connect your wallet to view your PXLMOB NFTs.</h3>
           <button onClick={() => handleWalletConnect(wallets)}>Connect Wallet</button>
         </div>
       )}

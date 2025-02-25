@@ -48,16 +48,16 @@ const TokenBalance = () => {
     <div className="token-balance-container">
       {activeAddress ? (
         <>
-          <p className="wallet-address">
+          <h3 className="wallet-address">
             Wallet: {activeAddress.slice(0, 6)}...{activeAddress.slice(-4)}
-          </p>
+          </h3>
           {isLoading && <p className="loading">Loading...</p>}
           {error && <p className="error">{error}</p>}
           {balance !== null && !isLoading && !error && (
-            <p className="balance">Balance: {balance.toFixed(6)} Tokens</p>
+            <h3 className="balance">Balance: {balance.toFixed(6)} Tokens</h3>
           )}
           {balance === 0 && !isLoading && !error && (
-            <p className="no-balance">No tokens found in this wallet.</p>
+            <h3 className="no-balance">No tokens found in this wallet.</h3>
           )}
         </>
       ) : (
