@@ -18,22 +18,14 @@ const Token = () => {
         <TokenBalance />
 
         <section className="dates">
-          <h2 className="section-title">Important Dates</h2>
-          <ul className="dates-list">
+          <h2 className="section-title">More Info Coming soon</h2>
+          {/* <ul className="dates-list">
             <li>Launch Date: <span>Eiusmod tempor incididunt</span></li>
             <li>First Distribution: <span>Ut labore et dolore magna aliqua</span></li>
             <li>Next Airdrop: <span>Ut enim ad minim veniam</span></li>
-          </ul>
+          </ul> */}
         </section>
 
-        <section className="supply">
-          <h2 className="section-title">Token Supply</h2>
-
-          <ul className="supply-list">
-            <li>Total Supply: <span>Excepteur sint occaecat cupidatat non proident</span></li>
-            <li>Circulating Supply: <span>Sunt in culpa qui officia deserunt mollit anim id est laborum</span></li>
-          </ul>
-        </section>
       </div>
       <Footer />
     </>

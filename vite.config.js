@@ -7,4 +7,5 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000, // Bump to 1000 kB
   },
+  define: {global: 'window'}
 })

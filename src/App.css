@@ -255,6 +255,24 @@
 .transfer-form {
   border: 3px solid #333;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#transfer-address {
+  padding-top: 0px;
+  margin-bottom: 5px;
+  width: 550px;
+}
+
+#transfer-amount {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
+#transfer-button {
+  width: 200px;
 }
 
 /* Media query for responsiveness */

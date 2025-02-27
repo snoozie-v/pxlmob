@@ -97,18 +97,20 @@ const TokenBalance: React.FC = () => {
             <h3>Transfer Tokens</h3>
             <input
               type="text"
+              id="transfer-address"
               placeholder="Recipient Address"
               value={recipient}
               onChange={(e) => setRecipient(e.target.value)}
             />
             <input
               type="number"
+              id="transfer-amount"
               placeholder="Amount"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               step="0.000001"
             />
-            <button onClick={transferTokens} disabled={isLoading}>
+            <button id="transfer-button" onClick={transferTokens} disabled={isLoading}>
               {isLoading ? 'Processing...' : 'Transfer'}
             </button>
             {txnStatus && <p className="txn-status">{txnStatus}</p>}
