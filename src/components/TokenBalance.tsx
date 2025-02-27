@@ -94,7 +94,7 @@ const TokenBalance: React.FC = () => {
           )}
 
           <div className="transfer-form">
-            <h3>Transfer Tokens</h3>
+            <h3>SEND $PIX</h3>
             <input
               type="text"
               id="transfer-address"
