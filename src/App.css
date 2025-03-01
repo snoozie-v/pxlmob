@@ -287,7 +287,7 @@
   max-width: 400px;
   list-style: none;
   padding: 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 0 auto;
   padding-bottom: 5px;
 }
@@ -306,6 +306,8 @@
 .allocation-img {
   width: 500px;
   height: 375px;
+  border-radius: 8px;
+  border: 6px solid #333;
 }
 
 /* Media query for responsiveness */
