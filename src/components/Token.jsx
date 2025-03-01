@@ -17,13 +17,13 @@ const Token = () => {
         <h3>$PiX is our community reward token and will be the currency for the PXLMOB Arcade.</h3>
         <h3>Each PXLMOB NFT you hold earns you daily $PiX via a token drip mechanism.</h3>
         <h3>We plan to use $PiX token as an onboarding tool for new users into the VOI ecosytem.</h3>
-        <h2>So have fun, and remember to #SendPix</h2>
+        <h2>So have fun, and remember to #SendPiX</h2>
         <hr/>
         <h2>Launch Date - 28/02/2025</h2>
         <h2>Total Supply - 100,000,000 $PiX Token</h2>
         <h3>Token Allocation:</h3>
         <ul className="allocation-list">
-          <li><span className="percentage">5%</span> Voi Foundation</li>
+          <li><span className="percentage">5%</span> Voi Fountain</li>
           <li><span className="percentage">5%</span> PXLMOB Team wallet --locked for 1 year</li>
           <li><span className="percentage">10%</span> Initial LP</li>
           <li><span className="percentage">10%</span> Token Drops / Giveaways and Prizes</li>
