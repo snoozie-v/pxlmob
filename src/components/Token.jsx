@@ -2,30 +2,37 @@ import Header from './Header';
 import Footer from './Footer';
 import tokenImg from '../assets/pixToken.jpg';
 import TokenBalance from './TokenBalance';
-
+import TokenOwners from './TokenOwners'
+import allocation from '../assets/allocation.png'
 
 const Token = () => {
   return (
     <>
       <Header />
       <div className="token-container">
-        <h1 className="token-title">$PIX Token Information</h1>
-        
-        <a href="https://voi.nomadex.app/0/0/2/410419" className="buy-link">
-          <h2>Buy $PIX on Nomadex</h2>
-        </a>
-        <img className="pix-image" src={tokenImg} alt="$PIX Token" />
+        <h1 className="token-title">$PiX Token Information</h1>
+        <img className="pix-image" src={tokenImg} alt="$PiX Token" />
         <TokenBalance />
-
-        <section className="dates">
-          <h2 className="section-title">More Info Coming soon</h2>
-          {/* <ul className="dates-list">
-            <li>Launch Date: <span>Eiusmod tempor incididunt</span></li>
-            <li>First Distribution: <span>Ut labore et dolore magna aliqua</span></li>
-            <li>Next Airdrop: <span>Ut enim ad minim veniam</span></li>
-          </ul> */}
-        </section>
-
+        <h2>Welcome to $PiX Token, more than just a meme coin!</h2>
+        <h3>$PiX is our community reward token and will be the currency for the PXLMOB Arcade.</h3>
+        <h3>Each PXLMOB NFT you hold earns you daily $PiX via a token drip mechanism.</h3>
+        <h3>We plan to use $PiX token as an onboarding tool for new users into the VOI ecosytem.</h3>
+        <h2>So have fun, and remember to #SendPix</h2>
+        <hr/>
+        <h3>Token Allocation:</h3>
+        <ul className="allocation-list">
+          <li><span className="percentage">5%</span> Voi Foundation</li>
+          <li><span className="percentage">5%</span> PXLMOB Team wallet --locked for 1 year</li>
+          <li><span className="percentage">10%</span> Initial LP</li>
+          <li><span className="percentage">10%</span> Token Drops / Giveaways and Prizes</li>
+          <li><span className="percentage">10%</span> PXLMOB SZN ONE - Daily Drip Staking</li>
+          <li><span className="percentage">10%</span> LP Partners</li>
+          <li><span className="percentage">10%</span> DeFi Rewards</li>
+          <li><span className="percentage">40%</span> CODE NAME - SUMMER TBA</li>
+        </ul>
+        <img className='allocation-img'src={allocation}></img>
+        <h3>Each PXLMOB SZN ONE NFT receives 10 $PiX token daily drip for 3 years!</h3>
+        <TokenOwners />
       </div>
       <Footer />
     </>

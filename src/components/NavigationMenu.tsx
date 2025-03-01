@@ -14,7 +14,7 @@ const NavigationMenu: React.FC = () => {
       <h2>Menu</h2>
       <ul>
         <li onClick={navigateToHome}>PXLMob NFTs</li>
-        <li onClick={navigateToToken}>$PIX Token</li>
+        <li onClick={navigateToToken}>$PiX Token</li>
         <li onClick={navigateToRoadmap}>Roadmap</li>
       </ul>
     </div>

@@ -4,7 +4,6 @@ import { handleWalletConnect } from './WalletConnect';
 import algosdk from 'algosdk';
 import { arc200 as Contract } from 'ulujs';
 
-// Algod client setup
 const algodClient = new algosdk.Algodv2('', 'https://mainnet-api.voi.nodely.dev', '');
 
 const TokenBalance: React.FC = () => {
@@ -20,7 +19,6 @@ const TokenBalance: React.FC = () => {
     if (!address) return;
     setIsLoading(true);
     setError(null);
-
     try {
       const response = await fetch(
         `https://mainnet-idx.nautilus.sh/nft-indexer/v1/arc200/balances?contractId=410419&accountId=${address}`
@@ -35,17 +33,14 @@ const TokenBalance: React.FC = () => {
     }
     setIsLoading(false);
   };
-
   const transferTokens = async () => {
     if (!activeAddress || !recipient || !amount) {
       setTxnStatus('Please fill in all fields.');
       return;
     }
-
     setIsLoading(true);
     setError(null);
     setTxnStatus('');
-
     try {
       const contract = new Contract(410419, algodClient, algodClient, {
         acc: { addr: activeAddress, sk: new Uint8Array() } // No private key needed for signing
@@ -57,8 +52,7 @@ const TokenBalance: React.FC = () => {
         throw new Error('Failed to build ARC-200 transaction');
       }
 
-      const txnsForSigning = resp.txns.map((txn: string) => new Uint8Array(atob(txn).split('').map(c => c.charCodeAt(0))));
-      
+      const txnsForSigning = resp.txns.map((txn: string) => new Uint8Array(atob(txn).split('').map(c => c.charCodeAt(0))));     
       const signedTxns = await signTransactions(txnsForSigning);
       const { txId } = await algodClient.sendRawTransaction(signedTxns).do();
       setTxnStatus(`Transaction sent! TxID: ${txId}`);
@@ -92,9 +86,9 @@ const TokenBalance: React.FC = () => {
           {balance === '0' && !isLoading && !error && (
             <h3 className="no-balance">No tokens found in this wallet.</h3>
           )}
-
+          
           <div className="transfer-form">
-            <h3>SEND $PIX</h3>
+            <h3>SEND $PiX</h3>
             <input
               type="text"
               id="transfer-address"
@@ -115,6 +109,7 @@ const TokenBalance: React.FC = () => {
             </button>
             {txnStatus && <p className="txn-status">{txnStatus}</p>}
           </div>
+          
         </>
       ) : (
         <div className="no-wallet">
