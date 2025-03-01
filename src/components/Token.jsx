@@ -19,6 +19,8 @@ const Token = () => {
         <h3>We plan to use $PiX token as an onboarding tool for new users into the VOI ecosytem.</h3>
         <h2>So have fun, and remember to #SendPix</h2>
         <hr/>
+        <h2>Launch Date - 28/02/2025</h2>
+        <h2>Total Supply - 100,000,000 $PiX Token</h2>
         <h3>Token Allocation:</h3>
         <ul className="allocation-list">
           <li><span className="percentage">5%</span> Voi Foundation</li>
