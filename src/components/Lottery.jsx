@@ -6,7 +6,6 @@ import { Buffer } from 'buffer';
 import Header from './Header';
 import tokenImg from '../assets/pixToken.jpg';
 
-
 window.Buffer = window.Buffer || Buffer;
 
 const algorand = AlgorandClient.fromConfig({
@@ -29,7 +28,6 @@ function Lottery() {
   const [lastWonAmount, setLastWonAmount] = useState(0);
   const [copied, setCopied] = useState(false);
 
-
   const appId = 40093808; // PiX Lottery App ID Mainnet
   const tokenId = 410419; // PiX Token Main Net
   const enterAmount = 1_000_000_000; // 1000 Test PiX as entry
@@ -37,7 +35,6 @@ function Lottery() {
   const managerAddress = 'AM2O6LNEYJKPG7CMU6OIYW36GOFN7GKAH5HPSOSCLS42F7FCDVSMI4PFZY';
 
   const isApproved = allowance !== null && allowance >= BigInt(enterAmount);
-
   // Auto-update balance and last winner
   const fetchLotteryState = async () => {
     setIsLoadingState(true);
@@ -60,13 +57,11 @@ function Lottery() {
         setLastWonAmount(lastWinningAmount)
       } else {
         console.log('No last winning amount found');
-
       }
       // Fetch last winner
       const lastWinnerRaw = globalState['last_winner']?.valueRaw;
       if (lastWinnerRaw) {
         const lastWinnerAddress = algosdk.encodeAddress(new Uint8Array(lastWinnerRaw));
-
         setLastWinner(lastWinnerAddress);
       } else {
         console.log('No last_winner found');
@@ -78,7 +73,6 @@ function Lottery() {
     }
     setIsLoadingState(false);
   };
-
 
   useEffect(() => {
     fetchLotteryState(); 
@@ -282,15 +276,19 @@ function Lottery() {
             <div className="lottery-container">
             {!activeAddress ? (
                 <div className="step">
-                <p className="step-title">Step 1: Connect Wallet</p>
-                <p>Please connect your wallet to participate in the PiX Lottery.</p>
-                <button
-                  onClick={() => document.getElementById('walletImage')?.click()} // Trigger header's wallet image click
-                  className="action-button"
-                  aria-label="Connect wallet"
-                >
-                  Connect Wallet
-                </button>
+                  <p className="step-title">Step 1: Connect Wallet</p>
+                  <p>Please connect your wallet to participate in the PiX Lottery.</p>
+                  <button
+                    id = "connect"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
+                      document.getElementById('walletImage')?.click(); // Trigger wallet image click
+                    }}
+                    // className="action-button"
+                    aria-label="Connect wallet"
+                  >
+                    Connect Wallet
+                  </button>
                 </div>
             ) : (
                 <>
@@ -307,7 +305,7 @@ function Lottery() {
                     <button
                     onClick={checkAllowance}
                     disabled={isChecking || allowance !== null}
-                    className={`action-button ${isChecking || allowance !== null ? 'disabled' : ''}`}
+                    className={`${isChecking || allowance !== null ? 'disabled' : ''}`}
                     aria-label="Check token allowance"
                     aria-disabled={isChecking || allowance !== null}
                     >
@@ -337,7 +335,7 @@ function Lottery() {
                     <button
                     onClick={enterLottery}
                     disabled={!isApproved || isEntering}
-                    className={`action-button ${!isApproved || isEntering ? 'disabled' : ''}`}
+                    className={`${!isApproved || isEntering ? 'disabled' : ''}`}
                     aria-label="Enter lottery"
                     aria-disabled={!isApproved || isEntering}
                     title={!isApproved ? 'Complete previous steps to enable' : ''}
@@ -357,11 +355,12 @@ function Lottery() {
                 <button
                 onClick={pickWinner}
                 disabled={!activeAddress}
-                className={`action-button ${!activeAddress ? 'disabled' : ''}`}
+                className={`${!activeAddress ? 'disabled' : ''}`}
                 >
                 Pick Winner
                 </button>
             </div>
+            
             )}
     </div>
     );

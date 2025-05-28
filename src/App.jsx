@@ -7,7 +7,7 @@ import { WalletProvider, WalletId, WalletManager, NetworkConfigBuilder, useWalle
 import WalletContext from './components/WalletContext';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavigationMenu from './components/NavigationMenu'; 
-import RoadMap from './components/Roadmap';
+// import RoadMap from './components/Roadmap';
 
 const networks = new NetworkConfigBuilder()
   .addNetwork('voi-mainnet', {
@@ -69,7 +69,7 @@ function WalletProviderComponent() {
         <Routes>
           <Route path="/" element={<Pxlmob />} />
           <Route path="/token" element={<Token />} /> {/* Placeholder for Token page */}
-          <Route path="/roadmap" element={<RoadMap/>} /> {/* Placeholder for Roadmap page */}
+          {/* <Route path="/roadmap" element={<RoadMap/>} /> Placeholder for Roadmap page */}
           <Route path="/navigation-menu" element={<NavigationMenu />} />
           <Route path="/lottery" element={<Lottery />} />
         </Routes>

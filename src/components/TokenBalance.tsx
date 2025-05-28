@@ -114,12 +114,17 @@ const TokenBalance: React.FC = () => {
       ) : (
         <div className="no-wallet">
           <h3>Please connect your wallet to view your token balance.</h3>
-          <button 
-            id="connect" 
-            onClick={() => document.getElementById('walletImage')?.click()} // Trigger header's wallet image click           
-          >
-            Connect Wallet
-          </button>
+                  <button
+                    id = "connect"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
+                      document.getElementById('walletImage')?.click(); // Trigger wallet image click
+                    }}
+                    // className="action-button"
+                    aria-label="Connect wallet"
+                  >
+                    Connect Wallet
+                  </button>
         </div>
       )}
     </div>
