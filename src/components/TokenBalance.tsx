@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useWallet } from '@txnlab/use-wallet-react';
-import { handleWalletConnect } from './WalletConnect';
+
 import algosdk from 'algosdk';
 import { arc200 as Contract } from 'ulujs';
 
@@ -33,39 +33,39 @@ const TokenBalance: React.FC = () => {
     }
     setIsLoading(false);
   };
-  const transferTokens = async () => {
-    if (!activeAddress || !recipient || !amount) {
-      setTxnStatus('Please fill in all fields.');
-      return;
-    }
-    setIsLoading(true);
-    setError(null);
-    setTxnStatus('');
-    try {
-      const contract = new Contract(410419, algodClient, algodClient, {
-        acc: { addr: activeAddress, sk: new Uint8Array() } // No private key needed for signing
-      });
-      const amountInSmallestUnit = Math.round(parseFloat(amount) * 1_000_000);
-      const resp = await contract.arc200_transfer(recipient, BigInt(amountInSmallestUnit), true, false);
+  // const transferTokens = async () => {
+  //   if (!activeAddress || !recipient || !amount) {
+  //     setTxnStatus('Please fill in all fields.');
+  //     return;
+  //   }
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setTxnStatus('');
+  //   try {
+  //     const contract = new Contract(410419, algodClient, algodClient, {
+  //       acc: { addr: activeAddress, sk: new Uint8Array() } // No private key needed for signing
+  //     });
+  //     const amountInSmallestUnit = Math.round(parseFloat(amount) * 1_000_000);
+  //     const resp = await contract.arc200_transfer(recipient, BigInt(amountInSmallestUnit), true, false);
 
-      if (!resp.success || !resp.txns) {
-        throw new Error('Failed to build ARC-200 transaction');
-      }
+  //     if (!resp.success || !resp.txns) {
+  //       throw new Error('Failed to build ARC-200 transaction');
+  //     }
 
-      const txnsForSigning = resp.txns.map((txn: string) => new Uint8Array(atob(txn).split('').map(c => c.charCodeAt(0))));     
-      const signedTxns = await signTransactions(txnsForSigning);
-      const { txId } = await algodClient.sendRawTransaction(signedTxns).do();
-      setTxnStatus(`Transaction sent! TxID: ${txId}`);
+  //     const txnsForSigning = resp.txns.map((txn: string) => new Uint8Array(atob(txn).split('').map(c => c.charCodeAt(0))));     
+  //     const signedTxns = await signTransactions(txnsForSigning);
+  //     const { txId } = await algodClient.sendRawTransaction(signedTxns).do();
+  //     setTxnStatus(`Transaction sent! TxID: ${txId}`);
 
-      await algosdk.waitForConfirmation(algodClient, txId, 4);
-      setTxnStatus('Transfer successful!');
-      fetchTokenBalance(activeAddress);
-    } catch (err) {
-      setError('Transfer failed. Check network, address, or amount.');
-      console.error('Transfer error:', err);
-    }
-    setIsLoading(false);
-  };
+  //     await algosdk.waitForConfirmation(algodClient, txId, 4);
+  //     setTxnStatus('Transfer successful!');
+  //     fetchTokenBalance(activeAddress);
+  //   } catch (err) {
+  //     setError('Transfer failed. Check network, address, or amount.');
+  //     console.error('Transfer error:', err);
+  //   }
+  //   setIsLoading(false);
+  // };
 
   useEffect(() => {
     if (activeAddress) fetchTokenBalance(activeAddress);
@@ -87,7 +87,7 @@ const TokenBalance: React.FC = () => {
             <h3 className="no-balance">No tokens found in this wallet.</h3>
           )}
           
-          <div className="transfer-form">
+          {/* <div className="transfer-form">
             <h3>SEND $PiX</h3>
             <input
               type="text"
@@ -108,13 +108,16 @@ const TokenBalance: React.FC = () => {
               {isLoading ? 'Processing...' : 'Transfer'}
             </button>
             {txnStatus && <p className="txn-status">{txnStatus}</p>}
-          </div>
+          </div> */}
           
         </>
       ) : (
         <div className="no-wallet">
           <h3>Please connect your wallet to view your token balance.</h3>
-          <button id="connect" onClick={() => handleWalletConnect(wallets)}>
+          <button 
+            id="connect" 
+            onClick={() => document.getElementById('walletImage')?.click()} // Trigger header's wallet image click           
+          >
             Connect Wallet
           </button>
         </div>

@@ -41,6 +41,10 @@
   color: white;
   font-size: 12px;
 }
+
+.wallet-menu-item:hover {
+  background-color: #f0f0f0;
+}
 .random-image, .pix-image {
   width: 400px;
   height: 400px;
@@ -310,6 +314,109 @@
   border: 6px solid #333;
 }
 
+/* Lottery Section Styles */
+.lottery-state {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.lottery-state-info {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.lottery-state-details {
+  margin: 0.5rem 0;
+}
+
+.lottery-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+  margin-bottom: 1.5rem;
+}
+
+.step-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.25s;
+}
+
+.action-button:hover {
+  background-color: #0056b3; /* Darker shade for hover */
+}
+
+.action-button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+.manager-section {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.manager-section p {
+  margin-bottom: 0.5rem;
+}
+
+/* Lottery Winner Container */
+.lottery-winner-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.winner-address {
+  font-family: monospace; /* Improves readability for addresses */
+  font-size: 0.9em; /* Slightly smaller to save space */
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+.copy-button {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8em;
+  background-color: #509cc5; /* Matches your index.css button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.copy-button:hover {
+  background-color: #535bf2; /* Matches your button hover color */
+}
+
+.copy-button:focus,
+.copy-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
 /* Media query for responsiveness */
 @media (max-width: 780px) {
   #logo {
@@ -352,5 +459,25 @@
   margin-bottom: 10px;
   width: 250px;
 }
+
+  .lottery-state,
+  .lottery-container {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .action-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9em;
+  }
+
+  .winner-address {
+    font-size: 0.8em;
+  }
+
+  .copy-button {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.7em;
+  }
 }
 

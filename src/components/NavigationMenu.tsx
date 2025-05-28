@@ -8,6 +8,7 @@ const NavigationMenu: React.FC = () => {
   const navigateToHome = () => navigate('/');
   const navigateToToken = () => navigate('/token');
   const navigateToRoadmap = () => navigate('/roadmap');
+  const navigateToLottery = () => navigate('/lottery');
 
   return (
     <div className="navigation-menu">
@@ -16,6 +17,7 @@ const NavigationMenu: React.FC = () => {
         <li onClick={navigateToHome}>PXLMob NFTs</li>
         <li onClick={navigateToToken}>$PiX Token</li>
         <li onClick={navigateToRoadmap}>Roadmap</li>
+        <li onClick={navigateToLottery}>Lottery</li>
       </ul>
     </div>
   );

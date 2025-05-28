@@ -1,10 +1,9 @@
 import  { useState, useEffect } from 'react';
 import { useWallet } from '@txnlab/use-wallet-react';
-import { handleWalletConnect } from './WalletConnect';
 
 
 const NFTLookupTwo = () => {
-  const { activeAddress, wallets } = useWallet();
+  const { activeAddress } = useWallet();
   const [nfts, setNFTs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -82,7 +81,11 @@ const NFTLookupTwo = () => {
       ) : (
         <div className="no-wallet">
           <h3>Please connect your wallet to view your PXLMOB NFTs.</h3>
-          <button id="connect" onClick={() => handleWalletConnect(wallets)}>Connect Wallet</button>
+          <button 
+          id="connect" 
+          onClick={() => document.getElementById('walletImage')?.click()} // Trigger header's wallet image click
+          
+          >Connect Wallet</button>
         </div>
       )}
     </div>

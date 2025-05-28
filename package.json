@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@agoralabs-sh/avm-web-provider": "^1.7.0",
-    "@txnlab/use-wallet-react": "^3.12.0",
-    "algosdk": "2.7",
+    "@algorandfoundation/algokit-utils": "^9.1.0",
+    "@txnlab/use-wallet-react": "^4.1.0",
+    "algosdk": "^3.3.0",
+    "lute-connect": "^1.6.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.4",
