@@ -12,6 +12,7 @@
   "dependencies": {
     "@agoralabs-sh/avm-web-provider": "^1.7.0",
     "@algorandfoundation/algokit-utils": "^9.1.0",
+    "@popperjs/core": "^2.11.8",
     "@txnlab/use-wallet-react": "^4.1.0",
     "algosdk": "^3.3.0",
     "lute-connect": "^1.6.1",

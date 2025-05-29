@@ -16,13 +16,13 @@
 }
 
 .left {
-  margin-right: auto; /* Pushes everything else away from the left item */
+  margin-right: auto;
 }
 .center {
-  flex-grow: 0; /* Prevents it from expanding */
+  flex-grow: 0;
 }
 .right {
-  margin-left: auto; /* Pushes the right item to the far right */
+  margin-left: auto;
 }
 #logo {
   width: 350px;
@@ -30,7 +30,7 @@
 }
 
 #walletImage, #navMenu {
-  height: 69px; 
+  height: 69px;
 }
 
 .clickable {
@@ -42,9 +42,7 @@
   font-size: 12px;
 }
 
-.wallet-menu-item:hover {
-  background-color: #f0f0f0;
-}
+/* Remove standalone .wallet-menu-item:hover to avoid conflicts */
 .random-image, .pix-image {
   width: 400px;
   height: 400px;
@@ -80,7 +78,7 @@
 /* Link styling */
 .nft-link {
   text-decoration: none;
-  color: inherit; /* Keeps the link color consistent with surrounding text */
+  color: inherit;
 }
 
 /* Token ID text */
@@ -99,7 +97,6 @@
 
 /* Placeholder when no image is available */
 .nft-no-image {
-  /* Add styling if needed, e.g.: */
   font-size: 14px;
   color: #666;
 }
@@ -117,23 +114,12 @@
 }
 
 .buy-link {
-  text-decoration: none; /* Default, can be customized */
-  color: inherit; /* Keeps link color consistent, adjust as needed */
+  text-decoration: none;
+  color: inherit;
 }
 
 .buy-link h2 {
-  /* Add specific styles if needed, e.g.: */
-  /* margin: 10px 0; */
-  /* font-size: 20px; */
-}
-
-/* Assuming .pix-image might already exist, but if not: */
-.pix-image {
-  /* Add styles as needed, e.g.: */
-  /* display: block; */
-  /* margin: 20px auto; */
-  /* width: 100%; */
-  /* max-width: 300px; */
+  /* Add specific styles if needed */
 }
 
 /* Section styles */
@@ -207,7 +193,6 @@
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-
   color: white;
   border: none;
   border-radius: 5px;
@@ -243,12 +228,169 @@
   background-color: #e0e0e0;
 }
 
+/* Wallet Menu Styles */
+.wallet-menu-container {
+  position: relative;
+}
+
+.wallet-image {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.wallet-image:hover {
+  transform: scale(1.1);
+}
+
+.wallet-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.wallet-menu {
+  position: absolute;
+  top: 70px;
+  left: 15px;
+  background-color: #509cc5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 300px; /* Match navigation-menu width */
+  width: calc(100% - 30px); /* Responsive width, accounts for left: 15px */
+  box-sizing: border-box;
+  font-size: 16px;
+  animation: fadeIn 0.2s ease-in;
+  border: 1px solid #333; /* Define edges for visibility */
+}
+
+.wallet-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wallet-menu li {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+  max-width: 100%; /* Prevent overflow */
+  box-sizing: border-box; /* Include padding in width */
+  text-overflow: ellipsis; /* Handle long text */
+  overflow: hidden; /* Prevent text from spilling out */
+  white-space: nowrap; /* Keep text on one line */
+}
+
+.wallet-menu li:hover {
+  background-color: #e0e0e0;
+}
+
+.wallet-menu-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.wallet-menu-close:hover {
+  color: #e0e0e0;
+}
+
+/* Responsive bottom-sheet style for mobile */
+@media (max-width: 768px) {
+  .wallet-menu {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    border-radius: 16px 16px 0 0;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    padding: 15px; /* Reduced padding for more content space */
+    border: none; /* Remove border for full-width look */
+  }
+
+  .wallet-menu li {
+    padding: 8px; /* Slightly less padding for mobile */
+  }
+
+  #logo {
+    width: 175px;
+    height: 50px;
+  }
+  #walletImage, #navMenu {
+    height: 42px;
+  }
+  .random-image, .pix-image {
+    width: 200px;
+    height: 200px;
+    border: 6px solid #333;
+    border-radius: 8px;
+  }
+  .allocation-img {
+    width: 250px;
+    height: 188px;
+  }
+  .allocation-list {
+    max-width: 400px;
+    list-style: none;
+    padding: 0;
+    font-size: .9rem;
+    margin: 0 auto;
+    padding-bottom: 5px;
+  }
+  .nft-image {
+    width: 100px;
+    height: 100px;
+    border: 3px solid #333;
+    margin-top: 5px;
+    border-radius: 8px;
+  }
+  #transfer-address {
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 250px;
+  }
+  .lottery-state,
+  .lottery-container {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+  .action-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9em;
+  }
+  .winner-address {
+    font-size: 0.8em;
+  }
+  .copy-button {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.7em;
+  }
+}
+
+/* Footer and other styles remain unchanged */
 .footer {
   background-color: #333;
   color: white;
   text-align: center;
   padding: 6px;
-
   bottom: 0;
   width: 100%;
 }
@@ -297,14 +439,14 @@
 }
 
 .allocation-list li {
-  display: flex; /* Makes each <li> a flex container */
-  justify-content: flex-start; /* Aligns content to the left */
-  gap: 1rem; /* Adds space between percentage and description */
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .allocation-list .percentage {
-  min-width: 40px; /* Ensures percentages align by reserving space */
-  text-align: right; /* Optional: aligns percentages to the right within their space */
+  min-width: 40px;
+  text-align: right;
 }
 
 .allocation-img {
@@ -362,7 +504,7 @@
 }
 
 .action-button:hover {
-  background-color: #0056b3; /* Darker shade for hover */
+  background-color: #0056b3;
 }
 
 .action-button.disabled {
@@ -392,15 +534,15 @@
 }
 
 .winner-address {
-  font-family: monospace; /* Improves readability for addresses */
-  font-size: 0.9em; /* Slightly smaller to save space */
-  white-space: nowrap; /* Prevents wrapping */
+  font-family: monospace;
+  font-size: 0.9em;
+  white-space: nowrap;
 }
 
 .copy-button {
   padding: 0.2rem 0.5rem;
   font-size: 0.8em;
-  background-color: #509cc5; /* Matches your index.css button color */
+  background-color: #509cc5;
   color: white;
   border: none;
   border-radius: 4px;
@@ -411,7 +553,7 @@
 }
 
 .copy-button:hover {
-  background-color: #535bf2; /* Matches your button hover color */
+  background-color: #535bf2;
 }
 
 .copy-button:focus,
@@ -419,67 +561,14 @@
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Media query for responsiveness */
-@media (max-width: 780px) {
-  #logo {
-    width: 175px;
-    height: 50px;
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  #walletImage, #navMenu {
-    height: 42px; 
-  }
-  .random-image, .pix-image {
-    width: 200px;
-    height: 200px;
-    border: 6px solid #333;
-    border-radius: 8px;
-  }
-  .allocation-img {
-    width: 250px;
-    height: 188px;
-  }
-  .allocation-list {
-    max-width: 400px;
-    list-style: none;
-    padding: 0;
-    font-size: .9rem;
-    margin: 0 auto;
-    padding-bottom: 5px;
-  }
-  /* NFT image */
-.nft-image {
-  width: 100px;
-  height: 100px;
-  border: 3px solid #333;
-  margin-top: 5px;
-  border-radius: 8px;
-}
-
-#transfer-address {
-  padding-top: 0px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  width: 250px;
-}
-
-  .lottery-state,
-  .lottery-container {
-    max-width: 100%;
-    padding: 0.5rem;
-  }
-
-  .action-button {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9em;
-  }
-
-  .winner-address {
-    font-size: 0.8em;
-  }
-
-  .copy-button {
-    padding: 0.15rem 0.4rem;
-    font-size: 0.7em;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
-
