@@ -1,21 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useWallet } from '@txnlab/use-wallet-react';
-
 import algosdk from 'algosdk';
-import { arc200 as Contract } from 'ulujs';
+import { AlgorandClient, microAlgos } from '@algorandfoundation/algokit-utils';
 
-const algodClient = new algosdk.Algodv2('', 'https://mainnet-api.voi.nodely.dev', '');
+const algorand = AlgorandClient.fromConfig({
+  algodConfig: {
+    server: 'https://mainnet-api.voi.nodely.dev',
+  },
+});
 
-const TokenBalance: React.FC = () => {
-  const { activeAddress, wallets, signTransactions } = useWallet();
-  const [balance, setBalance] = useState<string | null>(null);
+const TokenBalance = () => {
+  const { activeAddress, transactionSigner } = useWallet();
+  const [balance, setBalance] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
   const [txnStatus, setTxnStatus] = useState('');
 
-  const fetchTokenBalance = async (address: string | undefined) => {
+  const tokenId = 410419; // PiX Token Main Net
+
+  const fetchTokenBalance = async (address) => {
     if (!address) return;
     setIsLoading(true);
     setError(null);
@@ -25,7 +30,7 @@ const TokenBalance: React.FC = () => {
       );
       if (!response.ok) throw new Error('Failed to fetch token balance');
       const data = await response.json();
-      const userBalance = data.balances.find((b: any) => b.accountId === address);
+      const userBalance = data.balances.find((b) => b.accountId === address);
       setBalance(userBalance ? (parseInt(userBalance.balance) / 1_000_000).toString() : '0');
     } catch (err) {
       setError('Failed to fetch token balance. Please try again.');
@@ -33,43 +38,47 @@ const TokenBalance: React.FC = () => {
     }
     setIsLoading(false);
   };
-  // const transferTokens = async () => {
-  //   if (!activeAddress || !recipient || !amount) {
-  //     setTxnStatus('Please fill in all fields.');
-  //     return;
-  //   }
-  //   setIsLoading(true);
-  //   setError(null);
-  //   setTxnStatus('');
-  //   try {
-  //     const contract = new Contract(410419, algodClient, algodClient, {
-  //       acc: { addr: activeAddress, sk: new Uint8Array() } // No private key needed for signing
-  //     });
-  //     const amountInSmallestUnit = Math.round(parseFloat(amount) * 1_000_000);
-  //     const resp = await contract.arc200_transfer(recipient, BigInt(amountInSmallestUnit), true, false);
 
-  //     if (!resp.success || !resp.txns) {
-  //       throw new Error('Failed to build ARC-200 transaction');
-  //     }
-
-  //     const txnsForSigning = resp.txns.map((txn: string) => new Uint8Array(atob(txn).split('').map(c => c.charCodeAt(0))));     
-  //     const signedTxns = await signTransactions(txnsForSigning);
-  //     const { txId } = await algodClient.sendRawTransaction(signedTxns).do();
-  //     setTxnStatus(`Transaction sent! TxID: ${txId}`);
-
-  //     await algosdk.waitForConfirmation(algodClient, txId, 4);
-  //     setTxnStatus('Transfer successful!');
-  //     fetchTokenBalance(activeAddress);
-  //   } catch (err) {
-  //     setError('Transfer failed. Check network, address, or amount.');
-  //     console.error('Transfer error:', err);
-  //   }
-  //   setIsLoading(false);
-  // };
+  const transferTokens = async () => {
+    if (!activeAddress || !recipient || !amount) {
+      setTxnStatus('Please fill in all fields.');
+      return;
+    }
+    setIsLoading(true);
+    setError(null);
+    setTxnStatus('');
+    try {
+      const transfer = algosdk.ABIMethod.fromSignature('arc200_transfer(address,uint256)bool');
+      const result = await algorand
+        .newGroup()
+        .addAppCallMethodCall({
+          sender: activeAddress,
+          appId: tokenId,
+          method: transfer,
+          args: [recipient, Math.round(parseFloat(amount) * 1_000_000)],
+        })
+        .send({
+          populateAppCallResources: true,
+        });
+      console.log('Transfer sent successfully', result);
+      setTxnStatus('Successfully transferred the tokens');
+      fetchTokenBalance(activeAddress);
+    } catch (error) {
+      setError('Transfer failed. Check network, address, or amount.');
+      console.error('Transfer error:', error);
+    }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     if (activeAddress) fetchTokenBalance(activeAddress);
   }, [activeAddress]);
+
+  useEffect(() => {
+    if (activeAddress && transactionSigner) {
+      algorand.account.setSigner(activeAddress, transactionSigner);
+    }
+  }, [activeAddress, transactionSigner]);
 
   return (
     <div className="token-balance-container">
@@ -81,13 +90,12 @@ const TokenBalance: React.FC = () => {
           {isLoading && <p className="loading">Loading...</p>}
           {error && <p className="error">{error}</p>}
           {balance !== null && !isLoading && !error && (
-            <h3 className="balance">Balance: {parseFloat(balance).toFixed(6)} Tokens</h3>
+            <h3 className="balance">Balance: {parseFloat(balance).toFixed(0)} Tokens</h3>
           )}
           {balance === '0' && !isLoading && !error && (
             <h3 className="no-balance">No tokens found in this wallet.</h3>
           )}
-          
-          {/* <div className="transfer-form">
+          <div className="transfer-form">
             <h3>SEND $PiX</h3>
             <input
               type="text"
@@ -108,23 +116,21 @@ const TokenBalance: React.FC = () => {
               {isLoading ? 'Processing...' : 'Transfer'}
             </button>
             {txnStatus && <p className="txn-status">{txnStatus}</p>}
-          </div> */}
-          
+          </div>
         </>
       ) : (
         <div className="no-wallet">
           <h3>Please connect your wallet to view your token balance.</h3>
-                  <button
-                    id = "connect"
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
-                      document.getElementById('walletImage')?.click(); // Trigger wallet image click
-                    }}
-                    // className="action-button"
-                    aria-label="Connect wallet"
-                  >
-                    Connect Wallet
-                  </button>
+          <button
+            id="connect"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              document.getElementById('walletImage')?.click();
+            }}
+            aria-label="Connect wallet"
+          >
+            Connect Wallet
+          </button>
         </div>
       )}
     </div>

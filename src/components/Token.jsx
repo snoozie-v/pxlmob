@@ -1,7 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 import tokenImg from '../assets/pixToken.jpg';
-import TokenBalance from './TokenBalance';
+import TokenBalance from './TokenBalance.tsx';
 import TokenOwners from './TokenOwners'
 import allocation from '../assets/allocation.png'
 

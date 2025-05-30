@@ -4,6 +4,7 @@ import { useWallet } from '@txnlab/use-wallet-react';
 import { AlgorandClient, microAlgos } from '@algorandfoundation/algokit-utils';
 import { Buffer } from 'buffer';
 import Header from './Header';
+import Footer from './Footer';
 import tokenImg from '../assets/pixToken.jpg';
 
 window.Buffer = window.Buffer || Buffer;
@@ -26,11 +27,10 @@ function Lottery() {
   const [isLoadingState, setIsLoadingState] = useState(false);
   const [error, setError] = useState(null);
   const [lastWonAmount, setLastWonAmount] = useState(0);
-  const [copied, setCopied] = useState(false);
 
   const appId = 40093808; // PiX Lottery App ID Mainnet
   const tokenId = 410419; // PiX Token Main Net
-  const enterAmount = 1_000_000_000; // 1000 Test PiX as entry
+  const enterAmount = 1_000_000_000; // 1000 PiX as entry
   const appAddress = 'QDQEZGFXB2INOFX3RVZWSRB54OECI6CUM6E2LQH5LW2BPB3BRINWJSOFL4';
   const managerAddress = 'AM2O6LNEYJKPG7CMU6OIYW36GOFN7GKAH5HPSOSCLS42F7FCDVSMI4PFZY';
 
@@ -223,16 +223,6 @@ function Lottery() {
     return `${start}...${end}`;
     };
 
-    const copyToClipboard = async (address) => {
-    try {
-        await navigator.clipboard.writeText(address);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000); 
-    } catch (err) {
-        console.error('Failed to copy:', err);
-    }
-    };
-
     return (
     <div className="main">
             <Header />
@@ -253,14 +243,6 @@ function Lottery() {
                     {lastWinner ? (
                         <>
                         <span className="winner-address">{truncateAddress(lastWinner)}</span>
-                        <button
-                            onClick={() => copyToClipboard(lastWinner)}
-                            className="copy-button"
-                            aria-label="Copy winner address"
-                            title="Copy full address"
-                        >
-                            {copied ? 'Copied!' : 'Copy'}
-                        </button>
                         </>
                     ) : (
                         'None'
@@ -293,14 +275,14 @@ function Lottery() {
             ) : (
                 <>
                 <div className="step">
-                    <p className="step-title">Step 1: Check Allowance</p>
+                    <p className="step-title">Step 1: Approval Check</p>
                     {allowance !== null ? (
                     <p>
-                        Allowance: {Number(allowance / 1_000_000n).toFixed(2)} PiX{' '}
-                        {isApproved ? '✅ Approved' : '❌ Not Approved'}
+                        Approved up to: {Number(allowance / 1_000_000n).toFixed(2)} PiX{' '}
+                        {isApproved ? '✅' : '❌'}
                     </p>
                     ) : (
-                    <p>Check if the lottery contract is approved to spend your PiX tokens.</p>
+                    <p>Check if you have approved the lottery contract.</p>
                     )}
                     <button
                     onClick={checkAllowance}
@@ -309,7 +291,7 @@ function Lottery() {
                     aria-label="Check token allowance"
                     aria-disabled={isChecking || allowance !== null}
                     >
-                    {isChecking ? 'Checking...' : 'Check Allowance'}
+                    {isChecking ? 'Checking...' : 'Check Approval'}
                     </button>
                 </div>
 
@@ -331,7 +313,7 @@ function Lottery() {
 
                 <div className="step">
                     <p className="step-title">Step 3: Enter Lottery</p>
-                    <p>Enter the lottery for 1,000 PiX by signing the transaction.</p>
+                    <p>Enter the lottery for 1,000 PiX .</p>
                     <button
                     onClick={enterLottery}
                     disabled={!isApproved || isEntering}
@@ -340,7 +322,7 @@ function Lottery() {
                     aria-disabled={!isApproved || isEntering}
                     title={!isApproved ? 'Complete previous steps to enable' : ''}
                     >
-                    {isEntering ? 'Entering...' : 'Enter 1k $PiX'}
+                    {isEntering ? 'Entering...' : 'Enter'}
                     </button>
                 </div>
 
@@ -362,6 +344,7 @@ function Lottery() {
             </div>
             
             )}
+        <Footer />
     </div>
     );
 }
