@@ -2,6 +2,7 @@ import './App.css';
 import Pxlmob from './components/Pxlmob';
 import Token from './components/Token';
 import Lottery from './components/Lottery';
+import Recycler from './components/Recycler';
 // import NFTDashboard from './components/NFTDashboard';
 import { WalletProvider, WalletId, WalletManager, NetworkConfigBuilder, useWallet } from '@txnlab/use-wallet-react';
 import WalletContext from './components/WalletContext';
@@ -71,7 +72,8 @@ function WalletProviderComponent() {
           <Route path="/token" element={<Token />} /> {/* Placeholder for Token page */}
           {/* <Route path="/roadmap" element={<RoadMap/>} /> Placeholder for Roadmap page */}
           <Route path="/navigation-menu" element={<NavigationMenu />} />
-          <Route path="/lottery" element={<Lottery />} />
+          {/* <Route path="/lottery" element={<Lottery />} /> */}
+          {/* <Route path="/recycler" element={<Recycler />} /> */}
         </Routes>
       </div>
     </WalletContext.Provider>

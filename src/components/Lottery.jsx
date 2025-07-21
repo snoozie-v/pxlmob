@@ -15,7 +15,6 @@ const algorand = AlgorandClient.fromConfig({
   },
 });
 
-// Initialize algosdk Indexer client for VOI
 const indexerClient = new algosdk.Indexer('', 'https://mainnet-idx.voi.nodely.dev', '');
 
 function Lottery() {
@@ -268,14 +267,14 @@ function Lottery() {
           sender: activeAddress,
           appId: appId,
           method: pickWinnerMethod,
-          staticFee: microAlgos(2000),
+          staticFee: microAlgos(5000),
           appReferences: appsReferenced,
           boxReferences: boxesReferenced,
         })
         .send({
           populateAppCallResources: true,
         });
-
+ 
       console.log('Pick winner result:', result);
       await fetchLotteryState();
       await fetchPlayers();
